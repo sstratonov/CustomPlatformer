@@ -26,5 +26,8 @@
     <ClInclude Include="Platformer.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

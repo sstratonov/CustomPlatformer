@@ -1,13 +1,16 @@
 ﻿#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Platformer.h"
+#include "camera.h"
 
 using namespace sf;
 
 
     class Player {
+    private:
+        float x, y = 0;
     public:
-        float x, y, dx, dy, w, h;
+        float dx, dy, w, h;
         float speed = 0;
         int direction = 0;
         String File;
@@ -48,13 +51,20 @@ using namespace sf;
         sprite.setPosition(x, y);
 
     }
+    float getplayerx() { // getter на координату х для камеры
+        return x;
+    }
+    float getplayery() { //getter на координату у для камеры
+        return y;
+    }
+
     };
 
     int main()
     {
 
     RenderWindow window(VideoMode(1280, 960), "Dangerino");
-
+    camera.reset(FloatRect(0, 0, 1280, 960));
     Image map_image;
     map_image.loadFromFile("../../Sprites/PNG/Tileset.png");
     Texture map;
@@ -63,7 +73,7 @@ using namespace sf;
     mainmap.setTexture(map);
 
 
-    Player Dino("DinoSpriteDoux.png", 250,250, 65.0, 100.0);
+    Player Dino("DinoSpriteDoux.png", 30,806, 65.0, 100.0);
 
     float currentframe = 0; // переменная,которая хранит кадр анимации спрайта
     Clock gametime; // привязка ко времени сфмл, а не к процессору
@@ -90,6 +100,7 @@ using namespace sf;
             currentframe += 0.007 * time;
             if (currentframe > 3) currentframe -= 3;
             Dino.sprite.setTextureRect(IntRect(66 * int(currentframe) + 66, 113, -66, 91));
+            getPlayerView(Dino.getplayerx(), Dino.getplayery());
          
         }
         if (Keyboard::isKeyPressed(Keyboard::D))
@@ -99,6 +110,7 @@ using namespace sf;
             currentframe += 0.005 * time;
             if (currentframe > 3) currentframe -= 3;
             Dino.sprite.setTextureRect(IntRect(66*int(currentframe),113,66,91)); 
+            getPlayerView(Dino.getplayerx(), Dino.getplayery());
        
            
         }
@@ -109,6 +121,7 @@ using namespace sf;
             currentframe += 0.005 * time;
             if (currentframe > 5) currentframe -= 5;
             Dino.sprite.setTextureRect(IntRect(74 * int(currentframe), 222, 74, 96));
+            getPlayerView(Dino.getplayerx(), Dino.getplayery());
            
         }
         if (Keyboard::isKeyPressed(Keyboard::S))
@@ -118,20 +131,23 @@ using namespace sf;
             currentframe += 0.005 * time;
             if (currentframe > 3) currentframe -= 3;
             Dino.sprite.setTextureRect(IntRect(66 * int(currentframe), 113, 65, 91));
+            getPlayerView(Dino.getplayerx(), Dino.getplayery()); 
             
         }
         Dino.update(time);
+        window.setView(camera);
 
         window.clear();
 
         for ( int i = 0; i < height_map; i++)
             for (int j = 0; j < width_map; j++)
             {
-                if (TileMap[i][j] == ' ')  mainmap.setTextureRect(IntRect(0, 0, 65, 65));
-                if (TileMap[i][j] == '0') mainmap.setTextureRect(IntRect(93, 50, 65 , 65));
+                if (TileMap[i][j] == ' ')  mainmap.setTextureRect(IntRect(0, 0, 64, 64));
+                if (TileMap[i][j] == '0') mainmap.setTextureRect(IntRect(79, 47, 64 , 64));
+                if (TileMap[i][j] == 'b') mainmap.setTextureRect(IntRect(148, 47, 64, 64));
 
 
-                mainmap.setPosition(j * 65, i * 65);
+                mainmap.setPosition(j * 64, i * 64);
 
 
                 window.draw(mainmap);
