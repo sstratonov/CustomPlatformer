@@ -3,25 +3,26 @@ c:\users\mysti\desktop\customplatformer\platformer\platformer\camera.h(21): warn
 c:\users\mysti\desktop\customplatformer\platformer\platformer\camera.h(24): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
 c:\users\mysti\desktop\customplatformer\platformer\platformer\camera.h(27): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
 c:\users\mysti\desktop\customplatformer\platformer\platformer\camera.h(30): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(26): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(27): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(28): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(37): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(38): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(39): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
           with
           [
               T=int
           ]
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(52): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(53): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(64): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(72): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(105): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(121): warning C4305: =: усечение из "double" в "float"
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(122): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(130): warning C4305: =: усечение из "double" в "float"
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(131): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(139): warning C4305: =: усечение из "double" в "float"
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(140): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(148): warning C4305: =: усечение из "double" в "float"
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(149): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(168): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(66): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(67): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(78): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(86): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(155): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(172): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(199): warning C4305: =: усечение из "double" в "float"
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(200): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(208): warning C4305: =: усечение из "double" в "float"
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(209): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(217): warning C4305: =: усечение из "double" в "float"
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(218): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(226): warning C4305: =: усечение из "double" в "float"
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(227): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(251): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
   Platformer.vcxproj -> C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Debug\Platformer.exe

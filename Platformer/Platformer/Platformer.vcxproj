@@ -173,6 +173,7 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="Platformer.h" />
+    <ClInclude Include="speech.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
