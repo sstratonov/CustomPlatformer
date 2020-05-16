@@ -74,7 +74,9 @@ public:
 		sprite.setOrigin(w / 2, h / 2);
 	}
 	void update(float time) { // функция обновления картинки игры, привязана к сфмл времени, не к процессору, что бы избежать разной скорости игры
+		
 		playercontrol();
+
 
 		switch (state)
 		{
@@ -90,6 +92,8 @@ public:
 			break;
 		
 		}
+		
+	
 		x += dx * time; // перемещение координаты х за время,когда задаем расстояние перемещения за время, получаем новую координату
 		checkCollision(dx, 0);
 		y += dy * time; // то же, что и с иксом
@@ -136,21 +140,19 @@ public:
 			//Dino.sprite.setTextureRect(IntRect(74 * int(currentframe), 222, 74, 96));
 
 		}
-		if (Keyboard::isKeyPressed(Keyboard::S))
-		{
-			state = down;
-			speed = 0.1;
-			//currentframe += 0.005 * time;
-			//if (currentframe > 3) currentframe -= 3;
-			//Dino.sprite.setTextureRect(IntRect(66 * int(currentframe), 113, 65, 91));
-
-		}
+		
 	}
 	float getplayerx() { // сеттер на координату х для камеры и игрока
 		return x;
 	}
 	float getplayery() { //сеттер на координату у для камеры и игрока
 		return y;
+	}
+	float getplayerdx() {
+		return dx;
+	}
+	float getplayerdy() {
+		return dy;
 	}
 	void checkCollision(float Dx, float Dy) {
 		for (int i = y / 64; i < (y + h) / 64; i++) // проходимся по всем игрикам, /64 потому что берем самый левый квадратик, потом самый правый при условии меньше
@@ -163,6 +165,7 @@ public:
 						y = i * 64 - h; // не даем войти в текстуру,когда перемещаемся вниз, просто отбрасывая персонажа на его высоту
 						dy = 0;
 						playerOnGround = true;
+
 					}
 
 					if (Dy < 0)
@@ -234,9 +237,8 @@ int main()
 
 
 	Player Dino("DinoSpriteDoux.png",65, 295, 65.0, 90.0);
-
+	float currentframe = 0;
 	bool showLeveltext = true;
-	float currentframe = 0; // переменная,которая хранит кадр анимации спрайта
 	Clock gametime; // привязка ко времени сфмл, а не к процессору
 
 	while (window.isOpen()) // основной цикл программы
@@ -273,7 +275,7 @@ int main()
 						}
 						}
 					
-			}
+			} 
 
 		}
 		float coordinatePlayerX, coordinatePlayerY;
@@ -283,7 +285,40 @@ int main()
 		{
 			getPlayerView(Dino.getplayerx(), Dino.getplayery());
 		}
-		
+
+		if (Keyboard::isKeyPressed(Keyboard::A)) {
+			currentframe += 0.007 * time;
+		if (currentframe > 3) currentframe -= 3;
+		Dino.sprite.setTextureRect(IntRect(66 * int(currentframe) + 66, 113, -66, 91));
+		}
+		if (Keyboard::isKeyPressed(Keyboard::D))
+		{
+			currentframe += 0.007 * time;
+			if (currentframe > 3) currentframe -= 3;
+			Dino.sprite.setTextureRect(IntRect(66 * int(currentframe), 113, 66, 91));
+		}
+		if (Keyboard::isKeyPressed(Keyboard::W))
+		{
+			currentframe += 0.001 * time;
+			if (currentframe > 5) currentframe -= 5;
+			Dino.sprite.setTextureRect(IntRect(74 * int(currentframe), 222, 74, 96));
+		}
+		if (Keyboard::isKeyPressed(Keyboard::W) && Keyboard::isKeyPressed(Keyboard::D))
+		{
+			currentframe += 0.0007 * time;
+			if (currentframe > 5) currentframe -= 5;
+			Dino.sprite.setTextureRect(IntRect(74 * int(currentframe), 222, 74, 96));
+			
+
+		}
+		if (Keyboard::isKeyPressed(Keyboard::W) && Keyboard::isKeyPressed(Keyboard::A))
+		{
+			currentframe += 0.0007 * time;
+			if (currentframe > 5) currentframe -= 5;
+			Dino.sprite.setTextureRect(IntRect(74 * int(currentframe)+74, 222, -74, 96));
+
+
+		}
 		
 		Dino.update(time);
 		window.setView(camera);
