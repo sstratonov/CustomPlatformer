@@ -4,35 +4,51 @@
 #include "Platformer.h"
 #include "camera.h"
 #include "speech.h"
-
+// осталось реализовать меню стартовое,меню после смерти,врага,нормальную карту,музыку.
 using namespace sf;
 using namespace std;
-/*
-class Character {
-public: 
-	float dx, dy, w, h,x,y,speed,moveTimer;
-	int w, h, health;
-	bool life, playerOnground;
-	Texture texture;
-	Sprite sprite;
-	String name;
-	Character(Image &image,  float X, float Y, int W, int H, String Name) {
-		x = X;
-		y = y;
+
+class Enemy { // класс игрока
+private:
+	float x, y; // координаты игрока,используются только через сеттеры
+public:
+	float dx, dy, w, h; // перемещение по осям , высота и ширина спрайта игрока
+	float speed = 0; // изначальная скорость игрока
+	int score; // счет 
+	bool life;
+	bool playerOnGround;
+	int health;
+	enum  statePlayer
+	{
+		left, right, up, down, jump, stay
+	};
+	statePlayer state;
+	String File; // здесь хранится имя файла
+	Sprite sprite; // спрайт игрока
+	Image image; // картинка для спрайта
+	Texture texture; // текстура для спрайта
+	Enemy(String F, int X, int Y, float W, float H) { //класс конкструктор
+
+		File = F;
 		w = W;
 		h = H;
-		name = Name;
-		moveTimer = 0;
-		speed = 0;
+		score = 0;
 		health = 100;
-		dx = 0; dy = 0;
+		dx = 0;
+		dy = 0;
 		life = true;
-		playerOnground = false;
+		playerOnGround = false;
+		state = stay;
+		image.loadFromFile("../../Sprites/PNG/" + File);
 		texture.loadFromImage(image);
 		sprite.setTexture(texture);
+		x = X;
+		y = Y;
+		sprite.setTextureRect(IntRect(0, 8, w, h)); // создаем персонажа 
 		sprite.setOrigin(w / 2, h / 2);
 	}
-};*/
+};
+
 
 class Player { // класс игрока
 private:
@@ -73,6 +89,8 @@ public:
 		sprite.setTextureRect(IntRect(0,8, w, h)); // создаем персонажа 
 		sprite.setOrigin(w / 2, h / 2);
 	}
+
+	
 	void update(float time) { // функция обновления картинки игры, привязана к сфмл времени, не к процессору, что бы избежать разной скорости игры
 		
 		playercontrol();
@@ -105,53 +123,52 @@ public:
 		}
 		speed = 0; //после того как двигались - возвращаем скорость 0
 	
-		dy = dy + 0.0015 * time;
+		dy = dy + 0.0015 * time; // притяжение к земле
 
 		
 		//physicsmap(); // функция коллизии игрока и предметов
 	}
 	void playercontrol() {
-		if (Keyboard::isKeyPressed(Keyboard::A))
-		{
-			state = left;
-			speed = 0.1;
-			//currentframe += 0.007 * time;
-			//if (currentframe > 3) currentframe -= 3;
-			//Dino.sprite.setTextureRect(IntRect(66 * int(currentframe) + 66, 113, -66, 91));
+		if (life == true) {
+			if (Keyboard::isKeyPressed(Keyboard::A))
+			{
+				state = left;
+				speed = 0.1;
+				//currentframe += 0.007 * time;
+				//if (currentframe > 3) currentframe -= 3;
+				//Dino.sprite.setTextureRect(IntRect(66 * int(currentframe) + 66, 113, -66, 91));
 
-		}
-		if (Keyboard::isKeyPressed(Keyboard::D))
-		{
-			state = right;
-			speed = 0.1;
-			//currentframe += 0.005 * time;
-			//if (currentframe > 3) currentframe -= 3;
-			//Dino.sprite.setTextureRect(IntRect(66 * int(currentframe), 113, 66, 91));
+			}
+			if (Keyboard::isKeyPressed(Keyboard::D))
+			{
+				state = right;
+				speed = 0.1;
+				//currentframe += 0.005 * time;
+				//if (currentframe > 3) currentframe -= 3;
+				//Dino.sprite.setTextureRect(IntRect(66 * int(currentframe), 113, 66, 91));
 
-		}
-		if ((Keyboard::isKeyPressed(Keyboard::W)) && (playerOnGround))
-		{
-			
-			state = jump;
-			dy = -0.5;
-			playerOnGround = false;
-			//currentframe += 0.005 * time;
-			//if (currentframe > 5) currentframe -= 5;
-			//Dino.sprite.setTextureRect(IntRect(74 * int(currentframe), 222, 74, 96));
+			}
+			if ((Keyboard::isKeyPressed(Keyboard::W)) && (playerOnGround))
+			{
 
+				state = jump;
+				dy = -0.7;
+				playerOnGround = false;
+	
+			}
 		}
 		
 	}
-	float getplayerx() { // сеттер на координату х для камеры и игрока
+	float getplayerx() { // геттер на координату х для камеры и игрока
 		return x;
 	}
-	float getplayery() { //сеттер на координату у для камеры и игрока
+	float getplayery() { //геттер на координату у для камеры и игрока
 		return y;
 	}
-	float getplayerdx() {
+	float getplayerdx() { //геттер на перемещение
 		return dx;
 	}
-	float getplayerdy() {
+	float getplayerdy() { // геттер на перемещение
 		return dy;
 	}
 	void checkCollision(float Dx, float Dy) {
@@ -236,7 +253,7 @@ int main()
 	speechBubbleSprite.setTextureRect(IntRect(139,74,128,122));
 
 
-	Player Dino("DinoSpriteDoux.png",65, 295, 65.0, 90.0);
+	Player Dino("DinoSpriteDoux.png",65, 295, 64.0, 90.0);
 	float currentframe = 0;
 	bool showLeveltext = true;
 	Clock gametime; // привязка ко времени сфмл, а не к процессору
@@ -285,6 +302,7 @@ int main()
 		{
 			getPlayerView(Dino.getplayerx(), Dino.getplayery());
 		}
+		
 
 		if (Keyboard::isKeyPressed(Keyboard::A)) {
 			currentframe += 0.007 * time;
@@ -332,7 +350,7 @@ int main()
 				if (TileMap[i][j] == '0') mainmap.setTextureRect(IntRect(64, 48, 64, 64));
 				if (TileMap[i][j] == 'b') mainmap.setTextureRect(IntRect(144, 48, 64, 64));
 				if (TileMap[i][j] == 'h') mainmap.setTextureRect(IntRect(232,68,32,32));
-				if (TileMap[i][j] == 'c') mainmap.setTextureRect(IntRect(297,81,42,30));
+				if (TileMap[i][j] == 'c') mainmap.setTextureRect(IntRect(422,64,35,35));
 				if (TileMap[i][j] == 'p') mainmap.setTextureRect(IntRect(363,62,36,36));
 
 				mainmap.setPosition(j * 64, i * 64); //выводим на экран карту
@@ -350,11 +368,11 @@ int main()
 		ostringstream scorestring;
 		scorestring << Dino.score;
 		textscore.setString("Dinocoins collected:"+ scorestring.str());
-		textscore.setPosition(camera.getCenter().x+150, camera.getCenter().y-450);
+		textscore.setPosition(camera.getCenter().x+150, camera.getCenter().y-430);
 		ostringstream Dinohealth;
 		Dinohealth << Dino.health;
 		texthealth.setString("Health:" + Dinohealth.str());
-		texthealth.setPosition(camera.getCenter().x + 150, camera.getCenter().y - 420);
+		texthealth.setPosition(camera.getCenter().x + 150, camera.getCenter().y - 400);
 		window.draw(textscore);
 			window.draw(texthealth);
 		window.draw(Dino.sprite); //отрисовка персонажа

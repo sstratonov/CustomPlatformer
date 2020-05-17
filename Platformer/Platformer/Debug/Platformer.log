@@ -3,26 +3,34 @@ c:\users\mysti\desktop\customplatformer\platformer\platformer\camera.h(21): warn
 c:\users\mysti\desktop\customplatformer\platformer\platformer\camera.h(24): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
 c:\users\mysti\desktop\customplatformer\platformer\platformer\camera.h(27): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
 c:\users\mysti\desktop\customplatformer\platformer\platformer\camera.h(30): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(71): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(72): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(73): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(45): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(46): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(47): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
           with
           [
               T=int
           ]
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(108): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(117): warning C4305: =: усечение из "double" в "float"
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(126): warning C4305: =: усечение из "double" в "float"
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(158): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(159): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(173): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(182): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(246): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(263): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(290): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(296): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(302): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(87): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(88): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(89): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(126): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(136): warning C4305: =: усечение из "double" в "float"
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(145): warning C4305: =: усечение из "double" в "float"
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(155): warning C4305: =: усечение из "double" в "float"
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(175): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(176): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(190): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(199): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(263): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(280): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
 c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(308): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(316): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
-c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(338): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(314): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(320): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(326): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(334): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+c:\users\mysti\desktop\customplatformer\platformer\platformer\platformer.cpp(356): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
   Platformer.vcxproj -> C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Debug\Platformer.exe
