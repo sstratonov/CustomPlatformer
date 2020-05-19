@@ -7,8 +7,8 @@ View getPlayerView(float x, float y) {
 	float temporaryX = x;
 	float temporaryY = y;
 	if (x < 640) temporaryX = 640;
-	if (y < 240) temporaryY = 240;
-	if (y > 0) temporaryY = 500;
+	if (x > 6400) temporaryX = 6400;
+	if (y > 0) temporaryY = 1464;
 	
 	camera.setCenter(temporaryX, temporaryY);
 	return camera;
