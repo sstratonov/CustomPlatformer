@@ -1,19 +1,145 @@
 ﻿  Platformer.cpp
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\camera.h(21,19): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\camera.h(24,21): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\camera.h(27,20): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\camera.h(30,22): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(60,15): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(144,18): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(145,24): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(185,41): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(185,26): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(242,27): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(242,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(263,22): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(264,23): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(265,25): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(266,24): warning C4244: =: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(309,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(318,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(340,28): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\level.h(341,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(37,7): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(38,7): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(41,1): warning C4305: =: усечение из "double" в "float"
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(51,44): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(51,41): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(58,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(76,1): warning C4305: =: усечение из "double" в "float"
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(82,1): warning C4305: =: усечение из "double" в "float"
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(97,11): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(124,7): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(125,7): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(139,42): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(139,39): warning C4244: аргумент: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(174,11): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(181,1): warning C4305: =: усечение из "double" в "float"
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(186,1): warning C4305: =: усечение из "double" в "float"
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(191,1): warning C4305: =: усечение из "double" в "float"
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(209,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(340,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(355,82): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(355,76): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(363,14): warning C4244: инициализация: преобразование "sf::Int64" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(390,53): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(413,33): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(419,33): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(425,33): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(431,34): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(437,34): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(444,32): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Platformer\Platformer.cpp(468,89): warning C4305: =: усечение из "double" в "float"
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: static class sf::RenderStates const sf::RenderStates::Default" (__imp_?Default@RenderStates@sf@@2V12@B)"
-Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::CircleShape::CircleShape(float,unsigned int)" (__imp_??0CircleShape@sf@@QAE@MI@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: class sf::Time __thiscall sf::Clock::restart(void)" (__imp_?restart@Clock@sf@@QAE?AVTime@2@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: class sf::Time __thiscall sf::Clock::getElapsedTime(void)const " (__imp_?getElapsedTime@Clock@sf@@QBE?AVTime@2@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Clock::Clock(void)" (__imp_??0Clock@sf@@QAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __int64 __thiscall sf::Time::asMicroseconds(void)const " (__imp_?asMicroseconds@Time@sf@@QBE_JXZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Transformable::scale(float,float)" (__imp_?scale@Transformable@sf@@QAEXMM@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Transformable::setOrigin(float,float)" (__imp_?setOrigin@Transformable@sf@@QAEXMM@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Transformable::setPosition(float,float)" (__imp_?setPosition@Transformable@sf@@QAEXMM@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::View::move(float,float)" (__imp_?move@View@sf@@QAEXMM@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: class sf::Vector2<float> const & __thiscall sf::View::getCenter(void)const " (__imp_?getCenter@View@sf@@QBEABV?$Vector2@M@2@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::View::reset(class sf::Rect<float> const &)" (__imp_?reset@View@sf@@QAEXABV?$Rect@M@2@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::View::setCenter(float,float)" (__imp_?setCenter@View@sf@@QAEXMM@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::View::View(void)" (__imp_??0View@sf@@QAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Texture::setSmooth(bool)" (__imp_?setSmooth@Texture@sf@@QAEX_N@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: class sf::Vector2<unsigned int> __thiscall sf::Texture::getSize(void)const " (__imp_?getSize@Texture@sf@@QBE?AV?$Vector2@I@2@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: bool __thiscall sf::Texture::loadFromImage(class sf::Image const &,class sf::Rect<int> const &)" (__imp_?loadFromImage@Texture@sf@@QAE_NABVImage@2@ABV?$Rect@H@2@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Texture::~Texture(void)" (__imp_??1Texture@sf@@QAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Texture::Texture(void)" (__imp_??0Texture@sf@@QAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: bool __thiscall sf::Font::loadFromFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (__imp_?loadFromFile@Font@sf@@QAE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Font::~Font(void)" (__imp_??1Font@sf@@QAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Font::Font(void)" (__imp_??0Font@sf@@QAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) class sf::String __cdecl sf::operator+(class sf::String const &,class sf::String const &)" (__imp_??Hsf@@YA?AVString@0@ABV10@0@Z)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: virtual __thiscall sf::RenderWindow::~RenderWindow(void)" (__imp_??1RenderWindow@sf@@UAE@XZ)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::RenderWindow::RenderWindow(class sf::VideoMode,class sf::String const &,unsigned int,struct sf::ContextSettings const &)" (__imp_??0RenderWindow@sf@@QAE@VVideoMode@1@ABVString@1@IABUContextSettings@1@@Z)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Color::Color(unsigned char,unsigned char,unsigned char,unsigned char)" (__imp_??0Color@sf@@QAE@EEEE@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Image::createMaskFromColor(class sf::Color const &,unsigned char)" (__imp_?createMaskFromColor@Image@sf@@QAEXABVColor@2@E@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: bool __thiscall sf::Image::loadFromFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (__imp_?loadFromFile@Image@sf@@QAE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Image::~Image(void)" (__imp_??1Image@sf@@QAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Image::Image(void)" (__imp_??0Image@sf@@QAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: static class sf::Color const sf::Color::Black" (__imp_?Black@Color@sf@@2V12@B)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Window::display(void)" (__imp_?display@Window@sf@@QAEXXZ)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: bool __thiscall sf::Window::pollEvent(class sf::Event &)" (__imp_?pollEvent@Window@sf@@QAE_NAAVEvent@2@@Z)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: bool __thiscall sf::Window::isOpen(void)const " (__imp_?isOpen@Window@sf@@QBE_NXZ)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Window::close(void)" (__imp_?close@Window@sf@@QAEXXZ)"
-Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: static class sf::Color const sf::Color::Green" (__imp_?Green@Color@sf@@2V12@B)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::RenderTarget::draw(class sf::Drawable const &,class sf::RenderStates const &)" (__imp_?draw@RenderTarget@sf@@QAEXABVDrawable@2@ABVRenderStates@2@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::RenderTarget::setView(class sf::View const &)" (__imp_?setView@RenderTarget@sf@@QAEXABVView@2@@Z)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::RenderTarget::clear(class sf::Color const &)" (__imp_?clear@RenderTarget@sf@@QAEXABVColor@2@@Z)"
-Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Shape::setFillColor(class sf::Color const &)" (__imp_?setFillColor@Shape@sf@@QAEXABVColor@2@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: static bool __cdecl sf::Keyboard::isKeyPressed(enum sf::Keyboard::Key)" (__imp_?isKeyPressed@Keyboard@sf@@SA_NW4Key@12@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: class sf::String & __thiscall sf::String::operator=(class sf::String const &)" (__imp_??4String@sf@@QAEAAV01@ABV01@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::String::operator class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(void)const " (__imp_??BString@sf@@QBE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::String::String(void)" (__imp_??0String@sf@@QAE@XZ)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::String::String(char const *,class std::locale const &)" (__imp_??0String@sf@@QAE@PBDABVlocale@std@@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::String::String(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::locale const &)" (__imp_??0String@sf@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABVlocale@3@@Z)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::VideoMode::VideoMode(unsigned int,unsigned int,unsigned int)" (__imp_??0VideoMode@sf@@QAE@III@Z)"
-Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: virtual __thiscall sf::CircleShape::~CircleShape(void)" (__imp_??1CircleShape@sf@@UAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) private: virtual void __thiscall sf::Sprite::draw(class sf::RenderTarget &,class sf::RenderStates)const " (__imp_?draw@Sprite@sf@@EBEXAAVRenderTarget@2@VRenderStates@2@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Sprite::setColor(class sf::Color const &)" (__imp_?setColor@Sprite@sf@@QAEXABVColor@2@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Sprite::setTextureRect(class sf::Rect<int> const &)" (__imp_?setTextureRect@Sprite@sf@@QAEXABV?$Rect@H@2@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Sprite::setTexture(class sf::Texture const &,bool)" (__imp_?setTexture@Sprite@sf@@QAEXABVTexture@2@_N@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(void)" (__imp_??0Sprite@sf@@QAE@XZ)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Text::setFillColor(class sf::Color const &)" (__imp_?setFillColor@Text@sf@@QAEXABVColor@2@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: void __thiscall sf::Text::setString(class sf::String const &)" (__imp_?setString@Text@sf@@QAEXABVString@2@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Text::Text(class sf::String const &,class sf::Font const &,unsigned int)" (__imp_??0Text@sf@@QAE@ABVString@1@ABVFont@1@I@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(class sf::Sprite &&)" (__imp_??0Sprite@sf@@QAE@$$QAV01@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: virtual __thiscall sf::Text::~Text(void)" (__imp_??1Text@sf@@UAE@XZ)"
 Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::String::~String(void)" (__imp_??1String@sf@@QAE@XZ)"
-C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Release\Platformer.exe : fatal error LNK1120: неразрешенных внешних элементов: 17
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(class sf::Sprite const &)" (__imp_??0Sprite@sf@@QAE@ABV01@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: class sf::Sprite & __thiscall sf::Sprite::operator=(class sf::Sprite const &)" (__imp_??4Sprite@sf@@QAEAAV01@ABV01@@Z)"
+Platformer.obj : error LNK2001: неразрешенный внешний символ ""__declspec(dllimport) public: virtual __thiscall sf::Sprite::~Sprite(void)" (__imp_??1Sprite@sf@@UAE@XZ)"
+C:\Users\mysti\Desktop\CustomPlatformer\Platformer\Release\Platformer.exe : fatal error LNK1120: неразрешенных внешних элементов: 58

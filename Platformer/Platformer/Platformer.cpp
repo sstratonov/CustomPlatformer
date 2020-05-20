@@ -1,44 +1,44 @@
 ﻿#include <iostream>
 #include <sstream> // для строк в потоке
-#include <SFML/Graphics.hpp>
 #include "camera.h"
 #include "speech.h"
 #include "level.h"
 #include <vector>
+#include <list>
 #include "tinyxml/tinyxml.h"
-// осталось реализовать меню стартовое,меню после смерти,коллизию врага и музыку,и добавить диалоги
+// осталось реализовать музыку,пропадание элементов.
 using namespace sf;
 using namespace std;
 
-class Enemy { // класс игрока
+class Enemy { // класс врага
 private:
 
 public:
 	vector<Object> obj;
-	float x, y; // координаты игрока,используются только через сеттеры
+	float x, y; // координаты игрока,используются как через класс,так и через сеттеры
 	float dx, dy, w, h; // перемещение по осям , высота и ширина спрайта игрока
 	float speed = 0; // изначальная скорость игрока
 	int score; // счет
-	bool life;
-	bool playerOnGround;
-	int health;
+	bool life; // логическая переменная, жив ли враг
+	bool playerOnGround; // на земле ли враг
+	int health; // количесвто жизней
 	enum  statePlayer
 	{
 		left, right, up, down, jump, stay
-	};
+	}; // перечисляемая переменная,сделана для показа анимаций и передвижения по карте
 	statePlayer state;
 	String File; // здесь хранится имя файла
 	Sprite sprite; // спрайт игрока
 	Image image; // картинка для спрайта
 	Texture texture; // текстура для спрайта
 	Enemy(String F, Level& lev, float X, float Y, int W, int H) { //класс конкструктор
-		obj = lev.GetAllObjects();
+		obj = lev.GetAllObjects(); //из карты вытягиваем все доступные обьекты для нашего класса.
 		File = F;
 		w = W;
 		h = H;
-		score = 0;
+		score = 0; 
 		health = 100;
-		dx = 0.1;
+		dx = 0.01;
 		dy = 0;
 		life = true;
 		playerOnGround = false;
@@ -51,7 +51,7 @@ public:
 		sprite.setTextureRect(IntRect(39, 44, w, h)); // создаем персонажа
 		sprite.setOrigin(w / 2, h / 2);
 	}
-	FloatRect getRect() {
+	FloatRect getRect() { // функция,которая определяет прямоугольник нашего спрайта
 		return FloatRect(x, y, w, h);
 	}
 	void checkCollision(float Dx, float Dy) {
@@ -172,7 +172,6 @@ public:
 		}
 		speed = 0;
 		dy = dy + 0.0015 * time; // притяжение к земле
-		
 	}
 	void playercontrol() {
 		if (life == true) {
@@ -263,37 +262,90 @@ public:
 					if (getRect().intersects(obj[i].rect))
 					{
 						score++;
-						obj[i].name = "null";
 					}
-					
 				}
 				if (obj[i].name == "health")
 				{
 					health = health + 20;
-					obj[i].name = "null";
 				}
 				if (obj[i].name == "potion")
 				{
 					health = health - 40;
-					obj[i].name = "null";
 				}
 			}
 	}
 };
 
+
+void startmenu(RenderWindow & window) {
+
+	Texture menuTexture, menuBackground;
+	menuTexture.loadFromFile("../../PNG/play.png");
+	menuBackground.loadFromFile("../../PNG/menu.png");
+	Sprite menu(menuBackground), play(menuTexture);
+	bool menue = true;
+	int menuNumber = 0;
+	play.setPosition(540, 480);
+	menu.setPosition(0, 0);
+	while (menue)
+	{
+		Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == Event::Closed)
+				window.close();
+		}
+		
+		menuNumber = 0;
+		window.clear(Color(0,0,0));
+
+		if (IntRect(540, 480, 240, 120).contains(Mouse::getPosition(window))) { play.setColor(Color::Magenta); menuNumber = 1; }
+	
+
+		if (Mouse::isButtonPressed(Mouse::Left))
+		{
+			if (menuNumber == 1) menue = false;//если нажали первую кнопку, то выходим из меню 
+			
+
+		}
+
+		window.draw(menu);
+		window.draw(play);
+		window.display();
+	}
+	
+}
+
+
 int main()
 {
 	RenderWindow window(VideoMode(1280, 960), "Dinotaur");
+
+	startmenu(window);
 	camera.reset(FloatRect(0, 0, 1280, 960));
 	Level lvl;
 	lvl.LoadFromFile("test.tmx");
+
 	Font pixelfont;
 	pixelfont.loadFromFile("slkscreb.ttf");
 	Text textscore("", pixelfont, 25);
 	Text texthealth("", pixelfont, 25);
 	Text textmission("", pixelfont, 15);
+	Text textwin("", pixelfont, 80);
+
 	textscore.setFillColor(Color::Black);
 	textmission.setFillColor(Color::Black);
+	texthealth.setFillColor(Color::Black);
+	textwin.setFillColor(Color::Black);
+
+	list<Enemy*> enemies;
+	list<Enemy*>::iterator it;
+	vector<Object> e = lvl.GetObjects("enemy");
+	for (int i = 0; i < e.size(); i++)
+	{
+		enemies.push_back(new Enemy("Dinoenemy.png", lvl, e[i].rect.left, e[i].rect.top, 64, 90));
+	}
+	
 
 	Image speechBubble;
 	speechBubble.loadFromFile("../../Sprites/PNG/speech.png");
@@ -303,10 +355,10 @@ int main()
 	speechBubbleSprite.setTexture(speechBubbleTexture);
 	speechBubbleSprite.setTextureRect(IntRect(139, 74, 128, 122));
 	Object player = lvl.GetObject("player");
-	Object enemy = lvl.GetObject("enemy");
-
+	Object coins = lvl.GetObject("coins");
 	Player Dino("DinoSpriteDoux.png", lvl, player.rect.left, player.rect.top, 64.0, 90.0);
-	Enemy Rex("Dinoenemy.png", lvl, enemy.rect.left, enemy.rect.top, 64, 90);
+
+	bool win = false;
 	float currentframe = 0;
 	bool showLeveltext = true;
 	Clock gametime; // привязка ко времени сфмл, а не к процессору
@@ -315,7 +367,7 @@ int main()
 	{
 		float time = gametime.getElapsedTime().asMicroseconds();
 		gametime.restart();
-		time = time / 500;
+		time = time / 550;
 		Event event;
 		while (window.pollEvent(event))
 		{
@@ -400,14 +452,46 @@ int main()
 				Dino.sprite.setTextureRect(IntRect(77 * int(currentframe), 337, 64, 90));
 			}
 		}
+		for (it = enemies.begin(); it != enemies.end(); it++)
+		{
+			(*it)->update(time);
+		}
 
 		Dino.update(time);
-		Rex.update(time);
+
+		for (it = enemies.begin(); it != enemies.end();)//говорим что проходимся от начала до конца
+		{
+			Enemy* b = *it;//для удобства, чтобы не писать (*it)->
+			b->update(time);//вызываем ф-цию update для всех объектов (по сути для тех, кто жив)
+			if (b->life == false) { it = enemies.erase(it); delete b; }// если этот объект мертв, то удаляем его
+			else it++;//и идем курсором (итератором) к след объекту. так делаем со всеми объектами списка
+		}
+		for (it = enemies.begin(); it != enemies.end(); it++)//проходимся по эл-там списка
+		{
+			if ((*it)->getRect().intersects(Dino.getRect()))//если прямоугольник спрайта объекта пересекается с игроком
+			{
+				if ((Dino.dy > 0) && (Dino.playerOnGround == false)) { (*it)->dx = 0; Dino.dy = -0.2; (*it)->health = 0; }//если прыгнули на врага,то даем врагу скорость 0,отпрыгиваем от него чуть вверх,даем ему здоровье 0
+				else {
+					Dino.health -= 1;	//иначе враг подошел к нам сбоку и нанес урон
+				}
+			}
+		}
+		//cout << Dino.x <<" "<< Dino.y << endl;
+		if (Dino.x > 6600)
+		{
+			win = true;
+		}
+		
 		window.setView(camera);
 
 		window.clear();
 		lvl.Draw(window);
 
+		if (win)
+		{
+			textwin.setPosition(camera.getCenter().x-600, camera.getCenter().y);
+			window.draw(textwin);
+		}
 		if (!showLeveltext)
 		{
 			textmission.setPosition(Dino.getplayerx() + 70, Dino.getplayery() - 90);
@@ -415,10 +499,14 @@ int main()
 			window.draw(speechBubbleSprite);
 			window.draw(textmission);
 		}
+		
+	
 		ostringstream scorestring;
 		scorestring << Dino.score;
 		textscore.setString("Dinocoins collected:" + scorestring.str());
 		textscore.setPosition(camera.getCenter().x + 100, camera.getCenter().y - 430);
+		textwin.setString("CONGRATULATIONS!\nYOU WON!");
+		
 		ostringstream Dinohealth;
 		Dinohealth << Dino.health;
 		texthealth.setString("Health:" + Dinohealth.str());
@@ -426,7 +514,10 @@ int main()
 		window.draw(textscore);
 		window.draw(texthealth);
 		window.draw(Dino.sprite); //отрисовка персонажа
-		window.draw(Rex.sprite);
+		for (it = enemies.begin(); it != enemies.end(); it++) {
+			window.draw((*it)->sprite);
+		}
+
 		window.display();
 	}
 
