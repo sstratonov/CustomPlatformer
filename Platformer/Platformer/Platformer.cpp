@@ -5,7 +5,8 @@
 #include "level.h" // отрисовка карты(из библиотеки кусок)
 #include <vector>
 #include <list>
-#include "tinyxml/tinyxml.h" // библиотка для отрисовки карты 
+#include "tinyxml/tinyxml.h" // библиотка для отрисовки карты
+#include <SFML/Audio.hpp>
 // осталось реализовать музыку
 using namespace sf;
 using namespace std;
@@ -15,16 +16,9 @@ public:
 	vector<Object> obj;
 	float x, y; // координаты игрока,используются как через класс,так и через сеттеры
 	float dx, dy, w, h; // перемещение по осям , высота и ширина спрайта игрока
-	float speed = 0; // изначальная скорость игрока
-	int score; // счет
 	bool life; // логическая переменная, жив ли враг
 	bool playerOnGround; // на земле ли враг
 	int health; // количесвто жизней
-	enum  statePlayer
-	{
-		left, right, up, down, jump, stay
-	}; // перечисляемая переменная,сделана для показа анимаций и передвижения по карте
-	statePlayer state;
 	String File; // здесь хранится имя файла
 	Sprite sprite; // спрайт игрока
 	Image image; // картинка для спрайта
@@ -35,13 +29,11 @@ public:
 		File = F;
 		w = W;
 		h = H;
-		score = 0; 
 		health = 100;
 		dx = 0.1;
 		dy = 0;
 		life = true;
 		playerOnGround = false;
-		state = stay;
 		image.loadFromFile("../../Sprites/PNG/" + File);
 		texture.loadFromImage(image);
 		sprite.setTexture(texture);
@@ -98,7 +90,7 @@ public:
 };
 class Coin {
 public:
-	float x, y,w,h;
+	float x, y, w, h;
 	vector<Object> obj;
 	bool life; // логическая переменная, жив ли враг
 	int health; // количесвто жизней
@@ -131,7 +123,6 @@ public:
 			life = false;
 		}
 	}
-	
 };
 
 class Heart {
@@ -169,7 +160,6 @@ public:
 			life = false;
 		}
 	}
-
 };
 
 class Potion {
@@ -207,9 +197,7 @@ public:
 			life = false;
 		}
 	}
-
 };
-
 
 class Player { // класс игрока
 public:
@@ -265,12 +253,7 @@ public:
 			break;
 		case left: dx = -speed;
 			break;
-		case up:
-			break;
-		case down:
-			break;
 		case stay:
-
 			break;
 		}
 
@@ -279,10 +262,7 @@ public:
 		y += dy * time; // то же, что и с иксом
 		checkCollision(0, dy);
 		sprite.setPosition(x + w / 2, y + h / 2); // запоминаем координаты
-		if (health <= 0)
-		{
-			life = false;
-		}
+		if (health <= 0) { life = false; }
 		speed = 0;
 		dy = dy + 0.0015 * time; // притяжение к земле
 	}
@@ -370,14 +350,11 @@ public:
 						x = obj[i].rect.left + obj[i].rect.width;
 					}
 				}
-			
 			}
 	}
 };
 
-
-void startmenu(RenderWindow & window) {
-
+void startmenu(RenderWindow& window) {
 	Texture menuTexture, menuBackground;
 	menuTexture.loadFromFile("../../PNG/play.png");
 	menuBackground.loadFromFile("../../PNG/menu.png");
@@ -394,31 +371,35 @@ void startmenu(RenderWindow & window) {
 			if (event.type == Event::Closed)
 				window.close();
 		}
-		
+
 		menuNumber = 0;
-		window.clear(Color(0,0,0));
+		window.clear(Color(0, 0, 0));
 
 		if (IntRect(540, 480, 240, 120).contains(Mouse::getPosition(window))) { play.setColor(Color::Yellow); menuNumber = 1; }
-	
 
 		if (Mouse::isButtonPressed(Mouse::Left))
 		{
-			if (menuNumber == 1) menue = false;//если нажали первую кнопку, то выходим из меню 
-			
-
+			if (menuNumber == 1) menue = false;//если нажали первую кнопку, то выходим из меню
 		}
 
 		window.draw(menu);
 		window.draw(play);
 		window.display();
 	}
-	
 }
-
 
 int main()
 {
 	RenderWindow window(VideoMode(1280, 960), "Dinotaur");
+
+	Music music;
+	music.openFromFile("maintheme.wav");
+	music.play();
+	music.setLoop(true);
+
+	SoundBuffer jump;
+	jump.loadFromFile("jump.wav");
+	Sound jumpee(jump);
 
 	startmenu(window);
 	camera.reset(FloatRect(0, 0, 1280, 960));
@@ -444,7 +425,7 @@ int main()
 	{
 		potions.push_back(new Potion("potion.png", lvl, p[i].rect.left, p[i].rect.top, 64, 64));
 	}
-	
+
 	list<Coin*> coins;
 	list<Coin*>::iterator itt;
 	vector<Object> c = lvl.GetObjects("coin");
@@ -461,9 +442,6 @@ int main()
 		hearts.push_back(new Heart("heart.png", lvl, h[i].rect.left, h[i].rect.top, 64, 64));
 	}
 
-	
-
-
 	list<Enemy*> enemies;
 	list<Enemy*>::iterator it;
 	vector<Object> e = lvl.GetObjects("enemy");
@@ -471,7 +449,6 @@ int main()
 	{
 		enemies.push_back(new Enemy("Dinoenemy.png", lvl, e[i].rect.left, e[i].rect.top, 64, 90));
 	}
-	
 
 	Image speechBubble;
 	speechBubble.loadFromFile("../../Sprites/PNG/speech.png");
@@ -509,6 +486,7 @@ int main()
 					Dino.sprite.setTextureRect(IntRect(90, 6, 64, 96));
 				}
 			}
+
 			if (event.type == Event::KeyPressed)
 
 				if (event.key.code == Keyboard::Q)
@@ -556,6 +534,10 @@ int main()
 				if (currentframe > 5) currentframe -= 5;
 				Dino.sprite.setTextureRect(IntRect(74 * int(currentframe), 222, 74, 96));
 			}
+			if (Keyboard::isKeyPressed(Keyboard::W) && Dino.playerOnGround == true)
+			{
+				jumpee.play();
+			}
 			if (Keyboard::isKeyPressed(Keyboard::W) && Keyboard::isKeyPressed(Keyboard::D))
 			{
 				currentframe += 0.0007 * time;
@@ -581,7 +563,7 @@ int main()
 		{
 			(*it)->update(time);
 		}
-		for (itt= coins.begin(); itt != coins.end(); itt++)
+		for (itt = coins.begin(); itt != coins.end(); itt++)
 		{
 			(*itt)->update(time);
 		}
@@ -609,63 +591,62 @@ int main()
 			{
 				if ((Dino.dy > 0) && (Dino.playerOnGround == false)) { (*it)->dx = 0; Dino.dy = -0.2; (*it)->health = 0; }//если прыгнули на врага,то даем врагу скорость 0,отпрыгиваем от него чуть вверх,даем ему здоровье 0
 				else {
-					Dino.health -= 1;	//иначе враг подошел к нам сбоку и нанес урон
+					Dino.health -= 2;	//иначе враг нанес урон
 				}
 			}
 		}
 
-		for (itt = coins.begin(); itt != coins.end();)//говорим что проходимся от начала до конца
+		for (itt = coins.begin(); itt != coins.end();)
 		{
-			Coin* c = *itt;//для удобства, чтобы не писать (*it)->
-			c->update(time);//вызываем ф-цию update для всех объектов (по сути для тех, кто жив)
-			if (c->life == false) { itt = coins.erase(itt); delete c; }// если этот объект мертв, то удаляем его
-			else itt++;//и идем курсором (итератором) к след объекту. так делаем со всеми объектами списка
+			Coin* c = *itt;
+			c->update(time);
+			if (c->life == false) { itt = coins.erase(itt); delete c; }
+			else itt++;
 		}
-		for (itt = coins.begin(); itt != coins.end(); itt++)//проходимся по эл-там списка
+		for (itt = coins.begin(); itt != coins.end(); itt++)
 		{
-			if ((*itt)->getRect().intersects(Dino.getRect()))//если прямоугольник спрайта объекта пересекается с игроком
+			if ((*itt)->getRect().intersects(Dino.getRect()))
 			{
 				(*itt)->health = 0;
 				Dino.score++;
 			}
 		}
-		for (ittt = hearts.begin(); ittt != hearts.end();)//говорим что проходимся от начала до конца
+		for (ittt = hearts.begin(); ittt != hearts.end();)
 		{
-			Heart* h = *ittt;//для удобства, чтобы не писать (*it)->
-			h->update(time);//вызываем ф-цию update для всех объектов (по сути для тех, кто жив)
-			if (h->life == false) { ittt = hearts.erase(ittt); delete h; }// если этот объект мертв, то удаляем его
-			else ittt++;//и идем курсором (итератором) к след объекту. так делаем со всеми объектами списка
+			Heart* h = *ittt;
+			h->update(time);
+			if (h->life == false) { ittt = hearts.erase(ittt); delete h; }
+			else ittt++;
 		}
-		for (ittt = hearts.begin(); ittt != hearts.end(); ittt++)//проходимся по эл-там списка
+		for (ittt = hearts.begin(); ittt != hearts.end(); ittt++)
 		{
-			if ((*ittt)->getRect().intersects(Dino.getRect()))//если прямоугольник спрайта объекта пересекается с игроком
+			if ((*ittt)->getRect().intersects(Dino.getRect()))
 			{
 				(*ittt)->health = 0;
 				Dino.health += 20;
 			}
 		}
-		for (ip = potions.begin(); ip != potions.end();)//говорим что проходимся от начала до конца
+		for (ip = potions.begin(); ip != potions.end();)
 		{
-			Potion* p=*ip;//для удобства, чтобы не писать (*it)->
-			p->update(time);//вызываем ф-цию update для всех объектов (по сути для тех, кто жив)
-			if (p->life == false) { ip = potions.erase(ip); delete p; }// если этот объект мертв, то удаляем его
-			else ip++;// итератором к след объекту так делаем со всеми объектами списка
+			Potion* p = *ip;
+			p->update(time);
+			if (p->life == false) { ip = potions.erase(ip); delete p; }
+			else ip++;
 		}
-		for (ip = potions.begin(); ip != potions.end(); ip++)//проходимся по эл-там списка
+		for (ip = potions.begin(); ip != potions.end(); ip++)
 		{
-			if ((*ip)->getRect().intersects(Dino.getRect()))//если прямоугольник спрайта объекта пересекается с игроком
+			if ((*ip)->getRect().intersects(Dino.getRect()))
 			{
 				(*ip)->health = 0;
 				Dino.health -= 30;
 			}
 		}
 
-
-		if (Dino.x > 6600)
+		if (Dino.x > 6760)
 		{
 			win = true;
 		}
-		
+
 		window.setView(camera);
 
 		window.clear();
@@ -673,7 +654,7 @@ int main()
 
 		if (win)
 		{
-			textwin.setPosition(camera.getCenter().x-600, camera.getCenter().y);
+			textwin.setPosition(camera.getCenter().x - 600, camera.getCenter().y);
 			window.draw(textwin);
 		}
 		if (!showLeveltext)
@@ -683,14 +664,13 @@ int main()
 			window.draw(speechBubbleSprite);
 			window.draw(textmission);
 		}
-		
-	
+
 		ostringstream scorestring;
 		scorestring << Dino.score;
 		textscore.setString("Dinocoins collected:" + scorestring.str());
 		textscore.setPosition(camera.getCenter().x + 100, camera.getCenter().y - 430);
 		textwin.setString("CONGRATULATIONS!\n	YOU WON!");
-		
+
 		ostringstream Dinohealth;
 		Dinohealth << Dino.health;
 		texthealth.setString("Health:" + Dinohealth.str());
