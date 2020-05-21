@@ -8,71 +8,74 @@
 #include <iostream>
 #include "TinyXML/tinyxml.h"
 
+using namespace std;
+using namespace sf;
+
 struct Object
 {
-	int GetPropertyInt(std::string name);//номер свойства объекта в нашем списке
-	float GetPropertyFloat(std::string name);
-	std::string GetPropertyString(std::string name);
+	int GetPropertyInt(string name);//номер свойства объекта в нашем списке
+	float GetPropertyFloat(string name);
+	string GetPropertyString(string name);
 
-	std::string name;//объявили переменную name типа string
-	std::string type;//а здесь переменную type типа string
-	sf::Rect<float> rect;//тип Rect с нецелыми значениями
-	std::map<std::string, std::string> properties;//создаём ассоциатиный массив. ключ - строковый тип, значение - строковый
+	string name;//объявили переменную name типа string
+	string type;//а здесь переменную type типа string
+	Rect<float> rect;//тип Rect с нецелыми значениями
+	map<string, string> properties;//создаём ассоциатиный массив. ключ - строковый тип, значение - строковый
 
-	sf::Sprite sprite;//объявили спрайт
+	Sprite sprite;//объявили спрайт
 };
 
 struct Layer//слои
 {
 	int opacity;//непрозрачность слоя
-	std::vector<sf::Sprite> tiles;//закидываем в вектор тайлы
+	vector<Sprite> tiles;//закидываем в вектор тайлы
 };
 
 class Level//главный класс - уровень
 {
 public:
-	bool LoadFromFile(std::string filename);//возвращает false если не получилось загрузить
-	Object GetObject(std::string name);
-	std::vector<Object> GetObjects(std::string name);//выдаем объект в наш уровень
-	std::vector<Object> GetAllObjects();//выдаем все объекты в наш уровень
-	void Draw(sf::RenderWindow& window);//рисуем в окно
-	sf::Vector2i GetTileSize();//получаем размер тайла
+	bool LoadFromFile(string filename);//возвращает false если не получилось загрузить
+	Object GetObject(string name);
+	vector<Object> GetObjects(string name);//выдаем объект в наш уровень
+	vector<Object> GetAllObjects();//выдаем все объекты в наш уровень
+	void Draw(RenderWindow& window);//рисуем в окно
+	Vector2i GetTileSize();//получаем размер тайла
 
 private:
 	int width, height, tileWidth, tileHeight;//в tmx файле width height в начале,затем размер тайла
 	int firstTileID;//получаем айди первого тайла
-	sf::Rect<float> drawingBounds;//размер части карты которую рисуем
-	sf::Texture tilesetImage;//текстура карты
-	std::vector<Object> objects;//массив типа Объекты, который мы создали
-	std::vector<Layer> layers;
+	Rect<float> drawingBounds;//размер части карты которую рисуем
+	Texture tilesetImage;//текстура карты
+	vector<Object> objects;//массив типа Объекты, который мы создали
+	vector<Layer> layers;
 };
 
 ///////////////////////////////////////
 
 
-int Object::GetPropertyInt(std::string name)//возвращаем номер свойства в нашем списке
+int Object::GetPropertyInt(string name)//возвращаем номер свойства в нашем списке
 {
 	return atoi(properties[name].c_str());
 }
 
-float Object::GetPropertyFloat(std::string name)
+float Object::GetPropertyFloat(string name)
 {
 	return strtod(properties[name].c_str(), NULL);
 }
 
-std::string Object::GetPropertyString(std::string name)//получить имя в виде строки.вроде понятно
+std::string Object::GetPropertyString(string name)//получить имя в виде строки.вроде понятно
 {
 	return properties[name];
 }
 
-bool Level::LoadFromFile(std::string filename)//двоеточия-обращение к методам класса вне класса 
+bool Level::LoadFromFile(string filename)//двоеточия-обращение к методам класса вне класса 
 {
 	TiXmlDocument levelFile(filename.c_str());//загружаем файл в TiXmlDocument
 
 	// загружаем XML-карту
 	if (!levelFile.LoadFile())//если не удалось загрузить карту
 	{
-		std::cout << "Loading level \"" << filename << "\" failed." << std::endl;//выдаем ошибку
+		std::cout << "Loading level \"" << filename << "\" failed." << endl;//выдаем ошибку
 		return false;
 	}
 
@@ -102,7 +105,7 @@ bool Level::LoadFromFile(std::string filename)//двоеточия-обращение к методам кл
 
 	if (!img.loadFromFile(imagepath))
 	{
-		std::cout << "Failed to load tile sheet." << std::endl;//если не удалось загрузить тайлсет-выводим ошибку в консоль
+		cout << "Failed to load tile sheet." << endl;//если не удалось загрузить тайлсет-выводим ошибку в консоль
 		return false;
 	}
 
@@ -155,7 +158,7 @@ bool Level::LoadFromFile(std::string filename)//двоеточия-обращение к методам кл
 
 		if (layerDataElement == NULL)
 		{
-			std::cout << "Bad map. No layer information found." << std::endl;
+			cout << "Bad map. No layer information found." << endl;
 		}
 
 		//  контейнер <tile> - описание тайлов каждого слоя
@@ -164,7 +167,7 @@ bool Level::LoadFromFile(std::string filename)//двоеточия-обращение к методам кл
 
 		if (tileElement == NULL)
 		{
-			std::cout << "Bad map. No tile information found." << std::endl;
+			std::cout << "Bad map. No tile information found." << endl;
 			return false;
 		}
 
