@@ -212,7 +212,7 @@ public:
 	int health;
 	enum  statePlayer
 	{
-		left, right, up, down, jump, stay, animstay
+		left, right, up, down, jump, stay, dead
 	};
 	statePlayer state;
 	String File; // здесь хранится имя файла
@@ -243,6 +243,7 @@ public:
 	FloatRect getRect() {
 		return FloatRect(x, y, w, h);
 	}
+	
 
 	void update(float time) { // функция обновления картинки игры, привязана к сфмл времени, не к процессору, что бы избежать разной скорости игры
 		playercontrol();
@@ -255,6 +256,8 @@ public:
 			break;
 		case stay:
 			break;
+		case dead:
+			break;
 		}
 
 		x += dx * time; // перемещение координаты х за время,когда задаем расстояние перемещения за время, получаем новую координату
@@ -262,9 +265,13 @@ public:
 		y += dy * time; // то же, что и с иксом
 		checkCollision(0, dy);
 		sprite.setPosition(x + w / 2, y + h / 2); // запоминаем координаты
-		if (health <= 0) { life = false; }
+		if (health <= 0) { 
+			life = false;
+			state = dead;
+		}
 		speed = 0;
 		dy = dy + 0.0015 * time; // притяжение к земле
+		
 	}
 	void playercontrol() {
 		if (life == true) {
@@ -327,13 +334,15 @@ public:
 				}
 				if (obj[i].name == "water")
 				{
-					life = false;
+					health = 0;
+					
 
 					if (Dy > 0)
 					{
 						y = obj[i].rect.top - h; // не даем войти в текстуру,когда перемещаемся вниз, просто отбрасывая персонажа на его высоту
 						dy = 0;
 						playerOnGround = true;
+
 					}
 
 					if (Dy < 0)
@@ -400,6 +409,30 @@ int main()
 	SoundBuffer jump;
 	jump.loadFromFile("jump.wav");
 	Sound jumpee(jump);
+
+	SoundBuffer vova;
+	vova.loadFromFile("blum.wav");
+	Sound vovacol(vova);
+
+	SoundBuffer Dinodeath;
+	Dinodeath.loadFromFile("Dinodeath.wav");
+	Sound ouch(Dinodeath);
+
+	SoundBuffer Dinohealth;
+	Dinohealth.loadFromFile("Health.wav");
+	Sound suorb(Dinohealth);
+	
+	SoundBuffer Dinosuorb;
+	Dinosuorb.loadFromFile("Potion.wav");
+	Sound potio(Dinosuorb);
+	
+	SoundBuffer Bruh;
+	Bruh.loadFromFile("blabla.wav");
+	Sound blabla(Bruh);
+
+	SoundBuffer winner;
+	winner.loadFromFile("win.wav");
+	Sound congrats(winner);
 
 	startmenu(window);
 	camera.reset(FloatRect(0, 0, 1280, 960));
@@ -491,9 +524,11 @@ int main()
 
 				if (event.key.code == Keyboard::Q)
 				{
+					
 					switch (showLeveltext)
 					{
 					case true: {
+						blabla.play();
 						ostringstream task;
 						task << textlevel(currentlevel(Dino.getplayerx()));
 						textmission.setString(task.str());
@@ -537,6 +572,7 @@ int main()
 			if (Keyboard::isKeyPressed(Keyboard::W) && Dino.playerOnGround == true)
 			{
 				jumpee.play();
+				jumpee.setVolume(30);
 			}
 			if (Keyboard::isKeyPressed(Keyboard::W) && Keyboard::isKeyPressed(Keyboard::D))
 			{
@@ -553,12 +589,16 @@ int main()
 		}
 		if (Dino.life == false)
 		{
+			
 			currentframe += 0.002 * time;
 			if (currentframe > 3) currentframe = 2;
 			{
 				Dino.sprite.setTextureRect(IntRect(77 * int(currentframe), 337, 64, 90));
+				
 			}
 		}
+		
+		
 		for (it = enemies.begin(); it != enemies.end(); it++)
 		{
 			(*it)->update(time);
@@ -582,16 +622,18 @@ int main()
 		{
 			Enemy* b = *it;//для удобства, чтобы не писать (*it)->
 			b->update(time);//вызываем ф-цию update для всех объектов (по сути для тех, кто жив)
-			if (b->life == false) { it = enemies.erase(it); delete b; }// если этот объект мертв, то удаляем его
+			if (b->life == false) { it = enemies.erase(it); delete b; ouch.play();
+			}// если этот объект мертв, то удаляем его
 			else it++;//и идем курсором (итератором) к след объекту. так делаем со всеми объектами списка
 		}
 		for (it = enemies.begin(); it != enemies.end(); it++)//проходимся по эл-там списка
 		{
 			if ((*it)->getRect().intersects(Dino.getRect()))//если прямоугольник спрайта объекта пересекается с игроком
 			{
+				ouch.play();
 				if ((Dino.dy > 0) && (Dino.playerOnGround == false)) { (*it)->dx = 0; Dino.dy = -0.2; (*it)->health = 0; }//если прыгнули на врага,то даем врагу скорость 0,отпрыгиваем от него чуть вверх,даем ему здоровье 0
 				else {
-					Dino.health -= 2;	//иначе враг нанес урон
+					Dino.health -= 1;//иначе враг нанес урон
 				}
 			}
 		}
@@ -609,6 +651,7 @@ int main()
 			{
 				(*itt)->health = 0;
 				Dino.score++;
+				vovacol.play();
 			}
 		}
 		for (ittt = hearts.begin(); ittt != hearts.end();)
@@ -624,6 +667,7 @@ int main()
 			{
 				(*ittt)->health = 0;
 				Dino.health += 20;
+				suorb.play();
 			}
 		}
 		for (ip = potions.begin(); ip != potions.end();)
@@ -639,12 +683,18 @@ int main()
 			{
 				(*ip)->health = 0;
 				Dino.health -= 30;
+				potio.play();
 			}
 		}
 
-		if (Dino.x > 6760)
+		if (Dino.x > 6680)
 		{
 			win = true;
+			
+		}
+		if ((Dino.x > 6680)&&(Dino.x <6690))
+		{
+			congrats.play();
 		}
 
 		window.setView(camera);
@@ -653,8 +703,9 @@ int main()
 		lvl.Draw(window);
 
 		if (win)
-		{
-			textwin.setPosition(camera.getCenter().x - 600, camera.getCenter().y);
+		{	
+			
+			textwin.setPosition(camera.getCenter().x-600, camera.getCenter().y-350);
 			window.draw(textwin);
 		}
 		if (!showLeveltext)

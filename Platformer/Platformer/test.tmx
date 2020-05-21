@@ -13231,7 +13231,7 @@
   <object id="27" name="solid" x="2.66667" y="1857.33" width="317.333" height="54.6667"/>
   <object id="28" name="solid" x="321.333" y="1792.67" width="308.333" height="55.6667"/>
   <object id="29" name="solid" x="385.334" y="1731.33" width="186.666" height="56"/>
-  <object id="30" name="player" x="113.21" y="1670.76" width="129.333" height="176"/>
+  <object id="30" name="player" x="113.21" y="1658.76" width="129.333" height="176"/>
   <object id="33" name="solid" x="641.333" y="1856.67" width="60" height="57.3333"/>
   <object id="49" name="solid" x="769.333" y="1792" width="60" height="64"/>
   <object id="50" name="solid" x="898.667" y="1793.33" width="60" height="62.6667"/>
